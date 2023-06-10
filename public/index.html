@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="https://kit.fontawesome.com/30c8958713.js" crossorigin="anonymous"></script>
+    <title>Home</title>
+
+</head>
+<body>
+    <div class="header">
+        <div class="container">
+            <div class="logo"><img width="150px" src="./assets/img/logo.png"></div>
+            <ul class="navbar">
+                <li><a href="index.html">Home</a></li>
+                <!-- <li><a href="calculadora_categoria.html">Calculadora</a></li> -->
+                <li><a onclick="validar_autenticacao('quiz.html')">Quiz</a></li>
+                <li><a onclick="validar_autenticacao('dashboard.html')"><i class="fa-sharp fa-solid fa-chart-simple"></i></a></li>
+                <li><a onclick="validar_autenticacao('usuario.html')"><i class="fa-solid fa-user"></i></a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="banner">
+        <div class="container">
+            <h1>BEM VINDO!</h1>
+        </div>
+    </div>
+
+    <div class="pg_sobre_mim">
+
+    </div>
+</body>
+</html>
+
+<script>
+    function validar_autenticacao(caminho){
+        if(sessionStorage.EMAIL_USUARIO == undefined || sessionStorage.SENHA_USUARIO == undefined){
+            window.location.href = "login.html"
+        }else if(caminho == "quiz.html" && sessionStorage.PONTUACAO_USUARIO != 'null'){
+            window.location.href = "resultado_quiz.html";
+        }else{
+            window.location.href = caminho;
+        }
+    }
+</script>

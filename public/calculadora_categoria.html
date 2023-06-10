@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/30c8958713.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/style-calc.css">
+    <title>Calculadora de Categoria</title>
+</head>
+
+<body>
+    <section class="tela_calc">
+        <section class="section_resultado">
+            <div class="hide" id="div_resultado">
+            </div>
+        </section>
+        <section id="section_form" class="section_calc">
+
+            <div class="hide" id="div_calc">
+                <span class="txt_input">Altura</span>
+                <input id="input_altura">
+                <span class="txt_input">Peso</span>
+                <input id="input_peso">
+                <button class="bt_calc" onclick="descobrir_categoria()">Descobrir sua categoria de peso</button>
+            </div>
+
+            <div id="div_artes_marciais">
+                <h4>Selecione suas Artes Marciais</h4>
+                <div class="div_sl_bt">
+                    <select id="sl_artes_marciais">
+                        <option value="" selected>Selecione</option>
+                    </select>
+                    <div class="div_bt">
+                        <button id="bt_sl" class="bt_sl" onclick="inserir_arte_marcial()">Inserir</button>
+                        <button id="bt_sl" class="bt_sl" onclick="limpar_lista()">Limpar</button>
+                    </div>
+                </div>
+                
+                <table id="tb"></table>
+                <button id="bt_proximo" onclick="chamar_form()" disabled>Próximo</button>
+            </div>
+        </section>
+    </section>
+</body>
+</html>
+
+<script src="./js/script_calc.js"></script>
+
+<script>
+    fetch("/arteMarcial/listar").then(function (resposta) {
+            if (resposta.ok) {
+                if (resposta.status == 204) {
+                    throw "Nenhum resultado encontrado!!";
+                }
+
+                resposta.json().then(function (resposta) {
+                    console.log("Dados recebidos: ", JSON.stringify(resposta));
+
+                    for (let i = 0; i < resposta.length; i++) {
+                        sl_artes_marciais.innerHTML += `
+                            <option value="${resposta[i].idArteMarcial}">
+                                ${resposta[i].nome}
+                            </option>
+                        `;
+                    }
+                });
+            } else {
+                throw ('Houve um erro na API!');
+            }
+        }).catch(function (resposta) {
+            console.error(resposta);
+        });
+</script>

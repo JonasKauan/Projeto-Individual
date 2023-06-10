@@ -1,0 +1,282 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    height: 100vh;
+    overflow-y: scroll;
+    background-color: whitesmoke;
+    background-image: none;
+}
+
+.menu_lateral{
+    transition: 0.5s;
+    width: 6%;
+    height: 100%;
+    background-color: #D82727;
+    padding: 40px 0 40px 1%;
+    box-shadow: 3px 0 0 black;
+    overflow: hidden;
+
+    position: fixed;
+    top: 0;
+    bottom: 0;
+}
+
+.texto_menu{
+    display: flex;
+}
+
+.texto_menu h4{
+    margin: 0;
+    text-align: center;
+    color: white;
+}
+
+.menu_lateral.expandir{
+    width: 20%;
+}
+
+.btn_expandir{
+    width: 100%;
+    padding-left: 10px;
+}
+
+.btn_expandir i{
+    transition: .5s;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.btn_expandir i:hover{
+    color: black;
+}
+
+ul{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: 100%;
+    list-style: none;
+}
+
+.item_menu{
+    transition: 0.5s;
+}
+
+.item_menu:hover{
+    background-color: white;
+    border-radius: 15px;
+}
+
+.h4_user{
+    color: white;
+}
+
+.ativo{
+    background-color: white;
+    border-radius: 15px;
+}
+
+.item_menu .link{
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+    padding: 20px 4%;
+    display: flex;
+    line-height: 45px;
+}
+
+.item_menu .link:hover{
+    color: black;
+}
+
+.item_menu .txt_link, .texto_menu .txt_link{
+    margin-left: 100px;
+    transition: .5s;
+    opacity: 0;
+}
+
+.menu_lateral.expandir .txt_link{
+    margin-left: 30px;
+    opacity: 1;
+}
+
+.item_menu a .icone i{
+    font-size: 30px;
+    margin-left: 10px;
+}
+
+#link_ativo{
+    color: black;
+}
+
+/* conteudo da dashboard */
+
+.conteudo{
+    transition: 0.5s;
+    display: flex;
+    justify-content: center;
+    margin-left: 6%;
+}
+
+.conteudo .container{
+    transition: 0.5s;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+}
+
+.container_menu_expandido{
+    transition: 0.5s;
+    margin-left: 20%;
+}
+
+#section_dados_gerais{
+    display: flex;
+    flex-direction: column;
+    margin-top: 30px;
+}
+
+.div_dados_gerais{
+    display: flex;
+    align-self: center;
+    justify-content: center;
+    align-content: center;
+    flex-wrap: wrap;
+    flex-direction: column;
+    border-top: solid #D82727 5px;
+    border-bottom: solid #D82727 5px;
+    border-radius: 15px;
+    padding: 10px;
+    background-color: white;
+    width: 90%;
+    margin-bottom: 50px;
+}
+
+#txt_qtd_usuarios{
+    font-size: 35px;
+}
+
+.div_dados_gerais h4{
+    text-align: center;
+    font-size: 40px;
+}
+
+.div_section{
+    margin-bottom: 80px;
+}
+
+h4{
+    margin: 0;
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 23px;
+}
+
+#section_dados_especificos{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.div_tabelas{
+    width: 80%;
+    display: flex;
+    justify-content: space-around;
+}
+
+table{
+    font-size: 20px;
+    width: 400px;
+}
+
+td{
+    width: 40px;
+}
+
+.h4_titulo{
+    font-size: 40px;
+    text-align: center;
+}
+
+.ranking{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 50px;
+}
+
+#th_posicao{
+    width: 10%;
+}
+
+#th_usuario{
+    width: 15%;
+}
+
+#th_pts{
+    width: 10%;
+}
+
+#tr_ranking{
+    color: white;
+}
+
+#table_ranking{
+    width: 70%;
+    line-height: 30px;
+}
+
+#div_grafico{
+    margin-bottom: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.div_canvas{
+    background-color: white;
+    border: solid black 1px;
+    display: flex;
+    align-items: center;
+    width: 720px;
+    margin-bottom: 70px;
+}
+
+.dados_hide{
+    animation: irParaDireita 1s;
+    animation-fill-mode: forwards;
+}
+
+.dados_show{
+    animation: irParaEsquerda 1s;
+    animation-fill-mode: backwards;
+}
+
+@keyframes irParaDireita {
+    from{
+        transform: translateX(0vh);
+    }
+
+    to{
+        transform: translateX(200vh);
+    }
+}
+
+@keyframes irParaEsquerda {
+    from{
+        transform: translateX(200vh);
+    }
+
+    to{
+        transform: translateX(0vh);
+    }
+}

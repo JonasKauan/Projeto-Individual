@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/style-quiz.css">
+    <script src="https://kit.fontawesome.com/30c8958713.js" crossorigin="anonymous"></script>
+    <title>Quiz</title>
+    <script src="./js/perguntas.js"></script>
+</head>
+
+
+
+<body>
+    <div id="pg_quiz">
+        <a id="a_home" href="index.html"><button id="bt_voltar">Voltar</button></a>
+        <div class="container">
+            <div class="quiz" id="div_quiz">
+                <div id="head_quiz">
+                    <div class="label_quiz">Pontuação: <span id="span_pontuacao"></span></div>
+                    <div class="label_quiz">Questão <span id="numero_questao"></span> / <span id="total_questoes"></span></div>
+                </div>
+                <h4 id="pergunta">Pergunta: Lorem, ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis suscipit totam architecto repudiandae et accusantium quisquam incidunt, dolores, laboriosam enim maxime dolore excepturi labore. Commodi cupiditate id sequi vitae vel?</h4>
+                <div class="respostas">
+                    <button class="resposta" onclick="verificar_resposta(this)" id="a">A - Lorem ipsum dolor sit, amet consectetur adipisicing elit. Rerum doloremque, blanditiis ad iusto pariatur eius provident laborum officia culpa dicta molestias tenetur veritatis quas, sunt assumenda hic cum nisi architecto?</button>
+                    <button class="resposta" onclick="verificar_resposta(this)" id="b">B - Lorem ipsum dolor, sit amet consectetur adipisicing elit. Esse ratione amet iure iste obcaecati ipsa sint, maiores quas illo laboriosam? Porro laudantium libero veniam nihil, dolorem iusto inventore repudiandae sequi!</button>
+                    <button class="resposta" onclick="verificar_resposta(this)" id="c">C - Lorem ipsum dolor, sit amet consectetur adipisicing elit. Esse ratione amet iure iste obcaecati ipsa sint, maiores quas illo laboriosam? Porro laudantium libero veniam nihil, dolorem iusto inventore repudiandae sequi!</button>
+                    <button class="resposta" onclick="verificar_resposta(this)" id="d">D - Lorem ipsum dolor, sit amet consectetur adipisicing elit. Esse ratione amet iure iste obcaecati ipsa sint, maiores quas illo laboriosam? Porro laudantium libero veniam nihil, dolorem iusto inventore repudiandae sequi!</button>
+                    <button class="resposta" onclick="verificar_resposta(this)" id="e">E - Lorem ipsum dolor, sit amet consectetur adipisicing elit. Esse ratione amet iure iste obcaecati ipsa sint, maiores quas illo laboriosam? Porro laudantium libero veniam nihil, dolorem iusto inventore repudiandae sequi!</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+<script>
+    const placar = document.getElementById("span_pontuacao");
+    const progresso = document.getElementById("numero_questao");
+    const num_questoes = document.getElementById("total_questoes");
+    const alternativas = [a, b, c, d, e];
+    
+    var pontuacao = 0;
+    var numero_pergunta = 0;
+    var acertos = 0;
+    num_questoes.textContent = questionario.length;
+    placar.textContent = pontuacao;
+    
+    //Iniciando com a primeira pergunta
+    progresso.textContent = numero_pergunta + 1;
+    pergunta.textContent = pergunta_1.pergunta;
+    
+    a.textContent = pergunta_1.a;
+    b.textContent = pergunta_1.b;
+    c.textContent = pergunta_1.c;
+    d.textContent = pergunta_1.d;
+    e.textContent = pergunta_1.e;
+
+    function bloquear_respostas(){
+        alternativas.forEach((el) => el.classList.add("bloquear"));
+    }
+
+    function liberar_respostas(){
+        alternativas.forEach((el) => el.classList.remove("bloquear"));
+    }
+
+    function verificar_resposta(alternativa){
+
+        bloquear_respostas();
+
+
+        let resposta = alternativa.textContent;
+        var resposta_correta;
+
+        alternativas.forEach((el) => {
+            if(el.textContent == questionario[numero_pergunta].correta){
+                resposta_correta = el;
+            }
+        });
+
+        if(questionario[numero_pergunta].correta == resposta){
+            pontuacao += 12.5;
+            acertos++;
+        }else{
+             alternativa.classList.add("errada")
+        }
+
+        resposta_correta.classList.add("certa");
+
+        if(numero_pergunta + 1 < questionario.length){
+            setTimeout(() => {
+                alternativa.classList.remove("errada");
+                resposta_correta.classList.remove("certa");
+                numero_pergunta++;
+                prosseguir_quiz();
+            }, 2000);
+        }else{
+
+            div_quiz.classList.add("quiz_hide");
+            
+            setTimeout(() => {
+                div_quiz.innerHTML = `
+                    <div id="head_dados">
+                        <h4 id="titulo_fim">Seus Resultados</h4>
+                    </div>
+                    <div class="dados_quiz">
+                        <div id="div_acertos">
+                            <h4 id="num_acertos">
+                                <span id="span_acertos"></span>
+                                /
+                                <span id="total_questoes"></span>
+                            </h4>
+                            <h4 class="txt_label">Acertos</h4>
+                        </div>
+                        <div id="div_pontos">
+                            <h4 id="num_pontos"><span id="span_pontuacao">100</span></h4>
+                            <h4 class="txt_label">Pontuação</h4>
+                        </div>
+                    </div>
+                `;
+
+                span_acertos.textContent = acertos;
+                total_questoes.textContent = questionario.length;
+                span_pontuacao.textContent = pontuacao;
+
+                cadastrar_pontuacao(pontuacao);
+
+                sessionStorage.PONTUACAO_USUARIO = pontuacao;
+                
+                div_quiz.classList.add("quiz_show");
+            }, 4000);
+
+
+        }
+    }
+
+    function prosseguir_quiz(){
+        placar.textContent = pontuacao;
+        progresso.textContent = numero_pergunta + 1;
+        pergunta.textContent = questionario[numero_pergunta].pergunta;
+        a.textContent = questionario[numero_pergunta].a;
+        b.textContent = questionario[numero_pergunta].b;
+        c.textContent = questionario[numero_pergunta].c;
+        d.textContent = questionario[numero_pergunta].d;
+        e.textContent = questionario[numero_pergunta].e;
+        liberar_respostas();
+    }
+
+    function cadastrar_pontuacao(pontuacao){
+        fetch(`/usuarios/cadastrarPontuacao/${Number(sessionStorage.ID_USUARIO)}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                pontos: pontuacao
+            })
+        }).then(function (resposta) {
+
+            if (resposta.ok) {
+                alert("Resultado cadastrado no banco com sucesso");
+            } else if (resposta.status == 404) {
+                window.alert("Deu 404!");
+            } else {
+                throw ("Houve um erro ao tentar realizar a postagem! Código da resposta: " + resposta.status);
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+        });
+    }
+
+
+</script>

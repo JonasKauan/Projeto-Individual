@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/style-calc.css">
+    <link rel="stylesheet" href="./css/style-dash.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <title>Dashboard</title>
+</head>
+<body onload="construir_tabelas()">
+    <nav class="menu_lateral">
+        <div class="btn_expandir">
+            <i class="bi bi-list" id="icone_expandir"></i>
+        </div>
+        
+        <ul>
+
+            <li id="boas_vindas" class="texto_menu">
+                <h4 class="txt_link">Olá <span id="nome_usuario">USUÁRIO</span></h4>
+            </li>
+
+            <li class="item_menu ativo" id="bt_dados">
+                <a href="#" class="link" id="link_ativo">
+                    <span class="icone"><i class="bi bi-bar-chart-fill"></i></span>
+                    <span class="txt_link">Dados</span>
+                </a>
+            </li>
+
+            <li class="item_menu" id="bt_ranking">
+                <a href="#" class="link">
+                    <span class="icone"><i class="bi bi-person-lines-fill"></i></span>
+                    <span class="txt_link">Ranking</span>
+                </a>
+            </li>
+
+            <li class="item_menu">
+                <a href="index.html" class="link">
+                    <span class="icone"><i class="bi bi-house-fill"></i></span>
+                    <span class="txt_link">Home</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+    <div class="conteudo">
+        <div class="container" id="div_container">
+            <div id="div_dados" class="dados dados_show">
+                
+                <div id="section_dados_gerais">
+                    <div class="div_dados_gerais" id="div_qtd_usuarios">
+                        <h4 id="txt_qtd_usuarios">Usuários cadastrados</h4>
+                        <h4 id="qtd_usuarios"></h4>
+                    </div>
+        
+                    <div class="div_dados_gerais" id="div_altura">
+                        <h4 id="txt_qtd_usuarios">Média de altura dos usuários</h4>
+                        <h4 id="h4_media_altura"></h4>
+                    </div>
+        
+                    <div class="div_dados_gerais" id="div_altura">
+                        <h4 id="txt_qtd_usuarios">Média de peso dos usuários</h4>
+                        <h4 id="h4_media_peso"></h4>
+                    </div>
+                </div>
+    
+                <div id="section_dados_especificos">
+
+                    <div class="div_tabelas">
+                        <h4 class="h4_titulo">Usuários mais pesados</h4>
+                        <h4 class="h4_titulo">Usuários mais altos</h4>
+                    </div>
+
+                    <div class="div_tabelas">
+                        <div class="div_section" id="section_peso">
+                            <table id="table_usuario_peso"></table>
+                        </div>
+            
+                        <div class="div_section" id="section_altura">
+                            <table id="table_usuario_altura"></table>
+                        </div>
+                    </div>
+
+                    <h4 class="h4_titulo">Altura média de cada Arte marcial</h4>
+                    <div class="div_canvas">
+                        <canvas id="grafico_altura_medio_arte"></canvas>
+                    </div>
+
+                    <h4 class="h4_titulo">Peso médio de cada Arte marcial</h4>
+                    <div class="div_canvas">
+                        <canvas id="grafico_peso_medio_arte"></canvas>
+                    </div>
+
+                    <h4 class="h4_titulo">Quantidade de praticantes de cada arte marcial</h4>
+                    <div class="div_canvas">
+                        <canvas id="grafico_qtd_arte"></canvas>
+                    </div>
+                    
+                    <h4 class="h4_titulo">Quantidade de usuários em cada categoria</h4>
+                    <div class="div_canvas">
+                        <canvas id="grafico_categoria"></canvas>
+                    </div>
+            </div>    
+        </div>
+    </div>
+
+    <script src="./js/dash.js"></script>
+    <script src="./js/dados_dash.js"></script>
+    <script src="./js/menu.js"></script>
+</body>
+</html>
+
+<script>
+    nome_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+</script>

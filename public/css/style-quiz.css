@@ -1,0 +1,163 @@
+body{
+    background-image: url('../assets/img/bgQuiz.jpg');
+    background-size: cover;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+}
+
+#pg_quiz{
+    height: 70vh;
+}
+
+#a_home{
+    height: 5%;
+    margin: 5px 0 0 5px;
+}
+
+#bt_voltar{
+    width: 140px;
+    height: 60px;
+    margin: 0;
+    font-size: 1.5rem;
+    background-color: #D82727;
+    color: whitesmoke;
+    opacity: 0.9;
+    border: none;
+    border-radius: 13px;
+    font-weight: 400;
+    cursor: pointer;
+}
+
+#bt_voltar:hover{
+    color:black;
+    transition: 0.5s;
+    opacity: 1;
+}
+
+.container{
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+#head_quiz{
+    display: flex;
+    justify-content: space-between;
+}
+
+.label_quiz{
+    font-size: 20px
+}
+
+.quiz{
+    display: flex;
+    flex-direction: column;
+    border-top: solid #D82727 5px;
+    border-bottom: solid #D82727 5px;
+    border-radius: 20px;
+    padding: 10px;
+    background-color: white;
+    width: 500px;
+}
+
+#pergunta{
+    font-size: 26px;
+}
+
+.respostas{
+    display: flex;
+    flex-direction: column;
+}
+
+.resposta{
+    transition: 0.5s;
+    background-color: #D82727;
+    color: antiquewhite;
+    border: none;
+    font-size: 20px;
+    font-weight: 600;
+    height: 50px;
+    border-radius: 10px;
+    cursor: pointer;
+    padding: 5px;
+    margin-bottom: 10px;
+    opacity: 0.8;
+}
+
+.resposta:hover{
+    opacity: 1;
+}
+
+.errada{
+    background-color: red;
+    opacity: 1;
+}
+
+.certa{
+    background-color:green;
+    opacity: 1;
+}
+
+.bloquear{
+    cursor: none;
+    pointer-events: none;
+}
+
+#head_dados{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 35px;
+}
+
+.dados_quiz{
+    display: flex;
+    justify-content: space-evenly;
+    text-align: center;
+}
+
+.txt_label{
+    font-size: 20px;
+}
+
+#num_acertos, #num_pontos, #num_pct{
+    font-size: 40px;
+    font-weight: 600;
+}
+
+.dados_quiz h4{
+    margin: 0;
+}
+
+.quiz_hide{
+    animation: direita 1s;
+    animation-delay: 2s;
+    animation-fill-mode: forwards;
+}
+
+.quiz_show{
+    animation: esquerda 500ms;
+    animation-delay: 1s;
+    animation-fill-mode: backwards;
+}
+
+@keyframes direita{
+    from{
+        transform: translateX(0);
+    }
+
+    to{
+        transform: translateX(200vh);
+    }
+}
+
+@keyframes esquerda{
+    from{
+        transform: translateX(200vh);
+    }
+
+    to{
+        transform: translateX(0);
+    }
+}

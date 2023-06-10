@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/style-cadastro.css">
+    <title>Cadastro</title>
+  </head>
+  
+  
+  <body>
+    <script src="./js/script_cadastro.js"></script>
+    <div id="tela_cadastro">
+
+      <div id="div_imagem">
+        <img width="700px" src="./assets/img/Boxing-pana.svg">
+      </div>
+
+      <div id="div_cadastro">
+        <div class="form_cadastro">
+          <h4 class="txtInputs">Nome</h4>
+          <input id="input_nome">
+          <h4 class="txtInputs">E-mail</h4>
+          <input type="email" onkeyup="validar_email(this.value)" id="input_email">
+          <h4 class="txtInputs">Senha</h4>
+          <input id="input_senha" type="password">
+          <h4 class="txtInputs" onkeyup="">Confirmar senha</h4>
+          <input id="input_conf_senha" onkeyup="confirmar_senhas(input_senha.value, this.value)"type="password">
+          <button id="bt_cadastro" onclick="validar_campos(input_nome.value, input_email.value, input_senha.value, input_conf_senha.value)">Cadastrar-se</button>
+        </div>
+      </div>
+    </div>
+  </body>
+  </html>
+  
+<script>
+  input_email.setCustomValidity("E-mail inválido");
+  input_conf_senha.setCustomValidity("As senhas precisam ser iguais");
+  input_senha.setCustomValidity("A senha precisa ter ao menos 8 caracteres");
+
+  function validar_campos(nome, email, senha, confirmar_senha){
+      if(nome == "" || email == "" || senha == ""){
+        alert("Todos os campos são obrigatórios");
+      }else{
+        if(validar_email(email) && validar_senha(senha) && confirmar_senhas(senha, confirmar_senha)){
+          cadastrar(nome, email, senha);
+        }
+      }
+  }
+
+  function validar_email(email){
+    if(email.indexOf("@") == -1 || email.indexOf(".com") == -1){
+      input_email.style.borderColor = "red";
+      input_email.reportValidity();
+      return false;
+    }else{
+      input_email.style.borderColor = "black";
+      return true;
+    }
+  }
+
+  function confirmar_senhas(senha, confirmar_senha){
+    if(senha != confirmar_senha){
+      input_conf_senha.style.borderColor = "red";
+      input_conf_senha.reportValidity();
+      return false;
+    }else{
+      input_conf_senha.style.borderColor = "black";
+      return true;
+    }
+  }
+
+  function validar_senha(senha){
+    if(senha.length < 8){
+      input_senha.style.borderColor = "red";
+      input_senha.reportValidity();
+      return false;
+    }else{
+      input_senha.style.borderColor = "black";
+      return true;
+    }
+  }
+
+</script>

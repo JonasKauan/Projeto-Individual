@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/style-quiz.css">
+    <script src="https://kit.fontawesome.com/30c8958713.js" crossorigin="anonymous"></script>
+    <title>Fim</title>
+    <script src="./js/perguntas.js"></script>
+</head>
+<body>
+    <div id="pg_quiz">
+        <a id="a_home" href="index.html"><button id="bt_voltar">Voltar</button></a>
+        <div class="container">
+            <div class="quiz">
+                <div id="head_dados">
+                    <h4 id="titulo_fim">Seus Resultados</h4>
+                </div>
+                <div class="dados_quiz">
+                    <div id="div_acertos">
+                        <h4 id="num_acertos">
+                            <span id="span_acertos"></span>
+                            /
+                            <span id="total_questoes">8</span>
+                        </h4>
+                        <h4 class="txt_label">Acertos</h4>
+                    </div>
+                    <div id="div_pontos">
+                        <h4 id="num_pontos"><span id="span_pontuacao"></span></h4>
+                        <h4 class="txt_label">Pontuação</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+<script>
+    span_pontuacao.innerHTML = sessionStorage.PONTUACAO_USUARIO;
+    span_acertos.innerHTML = sessionStorage.PONTUACAO_USUARIO / 12.5;
+</script>
