@@ -14,11 +14,10 @@
         <div class="container">
             <div class="logo"><img width="150px" src="./assets/img/logo.png"></div>
             <ul class="navbar">
-                <li><a href="index.html">Home</a></li>
-                <!-- <li><a href="calculadora_categoria.html">Calculadora</a></li> -->
+                <li><a href="index.html">Início</a></li>
                 <li><a onclick="validar_autenticacao('quiz.html')">Quiz</a></li>
                 <li><a onclick="validar_autenticacao('dashboard.html')"><i class="fa-sharp fa-solid fa-chart-simple"></i></a></li>
-                <li><a onclick="validar_autenticacao('usuario.html')"><i class="fa-solid fa-user"></i></a></li>
+                <li><a onclick="limpar_sessao()"><i class="fa-solid fa-right-from-bracket"></i></a></li>
             </ul>
         </div>
     </div>
@@ -28,9 +27,18 @@
             <h1>BEM VINDO!</h1>
         </div>
     </div>
-
-    <div class="pg_sobre_mim">
-
+    <div class="footer">
+        <div class="container">
+            <p class="txtFooter">
+                Feito por Jonnas de Oliveira
+            </p>
+            <p class="txtFooter">
+                <a href="https://github.com/JonasKauan"><i class="fa-brands fa-github"></i></a>
+                <a href="https://www.instagram.com/jonnaskauan/"><i class="fa-brands fa-instagram"></i></a>
+                <a href="https://twitter.com/mementoMoriSla"><i class="fa-brands fa-twitter"></i></a>
+                
+            </p>
+        </div>
     </div>
 </body>
 </html>
@@ -44,5 +52,10 @@
         }else{
             window.location.href = caminho;
         }
+    }
+
+    function limpar_sessao(){
+        sessionStorage.clear();
+        window.location.href = "index.html";
     }
 </script>

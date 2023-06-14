@@ -194,6 +194,7 @@ function contruir_tabela_ranking(resposta){
             <th></th>
         </tr>
     `
+    var tr_usuario = 0; 
 
     for(var i = 0; i < resposta.length; i++){
         var pontuacao = 0;
@@ -202,14 +203,21 @@ function contruir_tabela_ranking(resposta){
             pontuacao = resposta[i].pts;
         }
 
+        if(resposta[i].nome == sessionStorage.NOME_USUARIO){
+            tr_usuario = i;
+        }
+
         tb.innerHTML += `
-            <tr>
+            <tr class="tr_ranking">
                 <td>${i + 1}°</td>
                 <td>${resposta[i].nome}</td>
                 <td>${pontuacao}</td>
             </tr>
         `;
     }
+
+    var tupla_usuario = document.getElementsByClassName("tr_ranking");
+    tupla_usuario[tr_usuario].classList.add("tr_usuario");
 }
 
 function construir_graficos(){

@@ -54,7 +54,7 @@ body{
     display: flex;
     flex-direction: column;
     background-color: #D82727;
-    height: 700px;
+    height: 100vh;
     width: 55%;
     justify-content: center;
     align-items: center;
@@ -123,6 +123,9 @@ body{
 }
 
 .bt_sl{
+    color: white;
+    transition: 0.5s;
+    opacity: 1;
     font-size: 1.2rem;
     height: 40px;
     width: 100px;
@@ -134,30 +137,27 @@ body{
 }
 
 .bt_sl:hover{
-    opacity: 1;
-    font-weight: 600;
-    color: white;
-    transition: 0.5s;
+    color: black;
 }
 
 #bt_proximo{
+    color: white;
+    opacity: 1;
     height: 50px;
     font-size: 1.7rem;
     margin-left: 25px;
     margin-top: 20px;
     background-color: #D82727;
     opacity: 0.9;
-    border: none;
+    border: solid black 1px;
     border-radius: 10px;
     font-weight: 400;
+    transition: 0.5s;
     cursor: pointer;
 }
 
 #bt_proximo:enabled:hover{
-    opacity: 1;
-    font-weight: 600;
-    color: white;
-    transition: 0.5s;
+    color: black;
 }
 
 #bt_proximo:disabled{
@@ -196,25 +196,25 @@ th{
 }
 
 .bt_calc{
+    color: white;
     height: 50px;
     font-size: 1.7rem;
     margin-left: 25px;
-    padding: 5px;
+    padding: 10px;
     margin-top: 20px;
     background-color: #D82727;
     opacity: 0.9;
-    border: none;
+    border: solid black 1px;
     border-radius: 10px;
     font-weight: 400;
     cursor: pointer;
     align-self: center;
+    transition: 0.5s;
 }
 
 .bt_calc:hover{
     opacity: 1;
-    font-weight: 600;
-    color: white;
-    transition: 0.5s;
+    color: black;
 }
 
 .form-hide{
@@ -237,8 +237,6 @@ th{
         transform: translateX(0);
     }
 }
-
-
 
 @keyframes direita{
     from{

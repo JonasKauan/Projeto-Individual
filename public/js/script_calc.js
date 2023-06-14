@@ -43,6 +43,12 @@ lista_artes_marciais = [];
 
         let nome_arte_marcial = sl_artes_marciais.options[sl_artes_marciais.selectedIndex].text;
         let idArteMarcial = sl_artes_marciais.value;
+
+        if(idArteMarcial == ""){
+            alert("Por favor selecione uma luta");
+            return;
+        }
+        
         const esta_na_lista = (lista_artes_marciais.find(element => element.nome == nome_arte_marcial));
         if(!esta_na_lista){
 

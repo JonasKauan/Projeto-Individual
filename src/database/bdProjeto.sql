@@ -15,8 +15,6 @@ INSERT INTO arteMarcial VALUES
 	(null, 'Boxe'),
 	(null, 'Wrestling');
     
-SELECT * FROM arteMarcial;
-    
 CREATE TABLE categoria(
 	idCategoria int primary key auto_increment,
     nome VARCHAR(45)
@@ -32,8 +30,6 @@ INSERT INTO categoria VALUES
      (null,'Meio-pesado'),
 	 (null,'Pesado');
      
-SELECT * FROM categoria;
-
 CREATE TABLE usuario(
 	idUsuario int primary key auto_increment,
     nome varchar(45),
@@ -45,12 +41,6 @@ CREATE TABLE usuario(
 		references categoria (idCategoria)
 ); 
 
-DROP TABLE usuario;
-            
-SELECT * FROM dadosUsuario;
-
-DROP TABLE dadosUsuario;
-
 CREATE TABLE dadosUsuario(
 	fkUsuario int,
     fkArteMarcial int,
@@ -60,9 +50,9 @@ CREATE TABLE dadosUsuario(
 );
 
 SELECT * FROM usuario;
+SELECT * FROM arteMarcial;
 SELECT * FROM dadosUsuario;
-TRUNCATE dadosUsuario;
-TRUNCATE usuario;
+SELECT * FROM categoria;
 
 -- QUERYS PARA A DASH
 
@@ -114,5 +104,3 @@ SELECT categoria.nome AS categoriaNome, truncate(avg(pts),2) AS mediaPts FROM us
 -- ranking
 SELECT nome, pts FROM usuario
 	ORDER BY pts desc;
-    
-SELECT * FROM categoria;

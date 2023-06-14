@@ -261,6 +261,10 @@ td{
     animation-fill-mode: backwards;
 }
 
+.tr_usuario{
+    background-color: rgba(216, 39, 39, 0.7);
+}
+
 @keyframes irParaDireita {
     from{
         transform: translateX(0vh);
